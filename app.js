@@ -1,21 +1,19 @@
-// let randNum = generateNum();
-// let randFour = multNum();
+let randNum = generateNum();
+let randFour = multNum();
 
+function generateNum() {
+    let newNum = Math.floor(Math.random() * (101 - 1) + 1);
+    console.log(newNum);
+};
 
-// function generateNum() {
-//     let newNum = Math.floor(Math.random() * (101 - 1) + 1);
-//     console.log(newNum);
-// };
-
-// function multNum() {
-//     let timesFour = (generateNum() * 4);
-//     console.log(timesFour);  // this line keeps giving me a NaN?
-// };
-
-// //this is working, but because of the NaN on line 12, its acting wonky
-// setTimeout(() => {
-//     console.log(multNum());
-// }, 2000);  
+function multNum() {
+    let timesFour = (generateNum() * 4);
+    console.log(timesFour);  // this line keeps giving me a NaN?
+};
+//this is working, but because of the NaN on line 12, its acting wonky
+setTimeout(() => {
+    console.log(multNum());
+}, 2000);
 
 //this prints as 'a word', 'fourth', 'thirds' then 'another'
 //which makes sense because of how I have it coded.
@@ -49,19 +47,39 @@ getWord();
 //START PROMISES PART
 
 let b = true;
-let myMeal = await
 
+function orderFood() {
+    orderingChickenSandwich()
+        .then(() => {
+            console.log(`has this worked yet?`);
+        }, (err) => {
+            console.log(err);
+        });
+};
 function orderingChickenSandwich() {
     return new Promise((resolve, reject) => {
-        if (b === true) {
-            let myMeal = {
+        if (b == true) {
+            let tastey = {
                 sandwich: 'chicken',
                 veggies: 'lettuce'
             };
-            resolve(`MMM. This ${myMeal} is a tastey borger`);
+            resolve(console.log(`MMM. This ${tastey} is a tastey borger`));
         } else {
             let err = new Error(console.log('food machine broke'));
             reject(err);
         };
     })
 };
+orderFood();
+
+// Chaining Promises start
+
+function testMath() {
+    return new Promise((resolve, reject) => {
+        resolve(setTimeout(() => {
+            console.log(1);
+        }, 3000));
+    } 
+    );
+};
+
