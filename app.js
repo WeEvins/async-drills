@@ -22,16 +22,16 @@
 //was this all I was supposed to do it? directions unclear.
 function getWord() {
     console.log('a word');
-        setTimeout(() => {
-            console.log('another word');
-        }, 3000);
-        setTimeout(() => {
-            console.log('thirds the werds');
-        }, 2000);
-        setTimeout(() => {
-            console.log('fourth');
-        }, 1000);
-    }
+    setTimeout(() => {
+        console.log('another word');
+    }, 3000);
+    setTimeout(() => {
+        console.log('thirds the werds');
+    }, 2000);
+    setTimeout(() => {
+        console.log('fourth');
+    }, 1000);
+}
 
 
 getWord();
@@ -39,7 +39,7 @@ getWord();
 
 //number 6 under call backs is this mess here:
 // function countdown(num, callback) {
-    
+
 // }
 
 // function done() {
@@ -48,24 +48,20 @@ getWord();
 
 //START PROMISES PART
 
-let b = 'true';
-function err() {
-    new Error(console.log('food machine broke'));
-};
+let b = true;
+let myMeal = await
 
 function orderingChickenSandwich() {
-    if (b === true) {
-        let myMeal = {
-            sandwich: 'chicken',
-            veggies: 'lettuce'
+    return new Promise((resolve, reject) => {
+        if (b === true) {
+            let myMeal = {
+                sandwich: 'chicken',
+                veggies: 'lettuce'
+            };
+            resolve(`MMM. This ${myMeal} is a tastey borger`);
+        } else {
+            let err = new Error(console.log('food machine broke'));
+            reject(err);
         };
-        console.log(myMeal);
-    } 
+    })
 };
-let myPromise = orderingChickenSandwich();
-
-myPromise.then(() => {
-    console.log(myMeal);
-}, err(), {
-
-});
