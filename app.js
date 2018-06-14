@@ -4,13 +4,13 @@ let randFour = multNum();
 function generateNum() {
     let newNum = Math.floor(Math.random() * (101 - 1) + 1);
     console.log(newNum);
+    return newNum;
 };
 
 function multNum() {
     let timesFour = (generateNum() * 4);
-    console.log(timesFour);  // this line keeps giving me a NaN?
+    console.log('logging timesFour:', timesFour);
 };
-//this is working, but because of the NaN on line 12, its acting wonky
 setTimeout(() => {
     console.log(multNum());
 }, 2000);
@@ -75,11 +75,25 @@ orderFood();
 // Chaining Promises start
 
 function testMath() {
-    return new Promise((resolve, reject) => {
-        resolve(setTimeout(() => {
-            console.log(1);
-        }, 3000));
-    } 
-    );
+    return new Promise((resolve) => {
+        console.log('starting testMath promise');
+        setTimeout(() => {
+            console.log('resolving testMath promise with 1');
+            resolve(1);
+        }, 2000);
+    }).then((number) => {
+        numTimesTwo = number * 2;
+        console.log('testMath result times two is', numTimesTwo);
+        return numTimesTwo;
+    }).then((number) => {
+        numTimesFour = number * 4;
+        console.log('testMath comin\' in with the:', numTimesFour);
+        return numTimesFour;
+    }).then((number) => {
+        numTimesSix = number * 6;
+        console.log('times six!! give it up for time six!!!', numTimesSix);
+    }
+    )
 };
 
+testMath();
